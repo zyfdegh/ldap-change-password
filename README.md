@@ -22,11 +22,25 @@ yum install -y openldap-devel
 apt-get install openldap-devel
 ```
 
-## Install
+Get mqu/openldap if you do not have one in your local gopath:
 
 ```sh
-go get github.com/zyfdegh/
+go get github.com/mqu/openldap
 ```
 
 ## Usage
-Simply modify
+* Step 1:
+Modify **host** and **port** in ldap_pswd.go,which point to a runningOpenLDAP server
+
+* Step 2:
+Change **baseDN** in main.go, change userId,oldPassword,newPassword argument of the function **ChangePassword**
+
+* Step 3:
+**go build** and run the executable file.
+Check if any error occured in the log.
+
+## Common errors
+
+* Invalid credentials
+Checkout userId and password
+

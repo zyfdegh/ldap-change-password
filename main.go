@@ -7,5 +7,5 @@ import (
 func main() {
 	//baseDN
 	baseDN := "dc=linkernetworks,dc=com"
-	ldap_pswd.ChangePasswd(baseDN, "linker2", "password", "password2")
+	ldap_pswd.ChangePasswd(baseDN, "userId", "oldpassword", "newpassword")
 }
