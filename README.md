@@ -1,11 +1,14 @@
 # Ldap-change-password
-This project is used to change user password in ldap
+This project is used to change user password in openldap
 
-## Compile & Install
-After you git clone this project, try **go build** and you may get an error like this:
+## Compile and build source code
+After you git clone this project, try **go build** 
+If you get an error like this:
+
 > fatal error: ldap.h: No such file or directory
 
-This is caused by lack of ldap library.Install it in the command line
+You need to install the missing ldap library.
+Install it in the command line according to your linux distributin.
 
 * RedHat/CentOS
 
@@ -19,5 +22,11 @@ yum install -y openldap-devel
 apt-get install openldap-devel
 ```
 
-## Usage
+## Install
 
+```sh
+go get github.com/zyfdegh/
+```
+
+## Usage
+Simply modify
