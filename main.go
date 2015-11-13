@@ -5,7 +5,10 @@ import (
 )
 
 func main() {
-	//baseDN
-	baseDN := "dc=linkernetworks,dc=com"
-	ldap_pswd.ChangePasswd(baseDN, "userId", "oldpassword", "newpassword")
+	host := "192.168.10.197"
+	port := "8389"
+	//	dn := "cn=admin,dc=linkernetworks,dc=com"
+
+	dn := "uid=linker@linkernetworks.com,dc=linkernetworks,dc=com"
+	ldap_pswd.ChangePasswd(host, port, dn, "password", "newpassword")
 }
