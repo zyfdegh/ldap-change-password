@@ -6,19 +6,22 @@ import (
 	"github.com/mqu/openldap"
 )
 
-/*
-Example:
-	dn := "uid=linker@linkernetworks.com,dc=linkernetworks,dc=com"
-	oldPassword
-	newPassword
-
-	dn:="cn=admin,dc=linkernetworks,dc=com"
-	oldPassword
-	newPassword
-*/
-func ChangePasswd(host string, port string, dn string, oldPasswd string, newPasswd string) {
+//This function is used to change password in openldap.
+//Params:
+//	host: Openldap IP or hostname.
+//	port: Openldap port.
+//	dn:	similar to user ID.
+//	oldPasswd: Current password.
+//	newPasswd: New password.
+//The argument 'dn' looks like this,
+//	dn := "uid=linker@linkernetworks.com,dc=linkernetworks,dc=com"
+//	dn := "cn=admin,dc=linkernetworks,dc=com"
+//Returns:
+//	err: error
+func ChangePasswd(host string, port string, dn string, oldPasswd string,
+	newPasswd string) (err error) {
 	//connect and bind
-	ldap, err := connectLdap(host, port, dn, oldPasswd)
+	ldap, err := connectOpenldap(host, port, dn, oldPasswd)
 	if err != nil {
 		log.Printf("%v", err)
 		return
@@ -33,7 +36,6 @@ func ChangePasswd(host string, port string, dn string, oldPasswd string, newPass
 
 	//modify userPassword
 	attrs := make(map[string][]string)
-
 	attrs["userPassword"] = []string{newPasswd}
 	err = ldap.Modify(dn, attrs)
 	if err != nil {
@@ -41,9 +43,11 @@ func ChangePasswd(host string, port string, dn string, oldPasswd string, newPass
 		return
 	}
 	log.Printf("Modified!")
+	return
 }
 
-func connectLdap(host string, port string, dn string, passwd string) (*openldap.Ldap, error) {
+func connectOpenldap(host string, port string, dn string,
+	passwd string) (*openldap.Ldap, error) {
 	//init
 	url := "ldap://" + host + ":" + port + "/"
 	ldap, err := openldap.Initialize(url)
