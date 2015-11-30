@@ -10,6 +10,6 @@ func main() {
 	//	dn := "cn=admin,dc=linkernetworks,dc=com"
 
 	dn := "uid=linker@linkernetworks.com,dc=linkernetworks,dc=com"
-	ldap_pswd.ChangePasswd(host, port, dn, "password", "newpassword")
+	ldapasswd.ChangePasswd(host, port, dn, "password", "newpassword")
 
 }

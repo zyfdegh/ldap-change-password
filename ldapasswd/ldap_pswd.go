@@ -1,4 +1,4 @@
-package ldap_pswd
+package ldapasswd
 
 import (
 	"log"
