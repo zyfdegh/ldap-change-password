@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/zyfdegh/ldap-change-password/ldap_pswd"
+	"github.com/zyfdegh/ldap-change-password/ldapasswd"
 )
 
 func main() {
@@ -11,4 +11,5 @@ func main() {
 
 	dn := "uid=linker@linkernetworks.com,dc=linkernetworks,dc=com"
 	ldap_pswd.ChangePasswd(host, port, dn, "password", "newpassword")
+
 }
