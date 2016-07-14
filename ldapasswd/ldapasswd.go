@@ -52,7 +52,7 @@ func connectOpenldap(host string, port string, dn string,
 	url := "ldap://" + host + ":" + port + "/"
 	ldap, err := openldap.Initialize(url)
 	if err != nil {
-		log.Fatalf("Cannot connect to openldap.Reason:%v", err)
+		log.Printf("Cannot connect to openldap.Reason:%v", err)
 		return nil, err
 	}
 	log.Printf("Connected")
@@ -63,7 +63,7 @@ func connectOpenldap(host string, port string, dn string,
 	//connect
 	err = ldap.Bind(dn, passwd)
 	if err != nil {
-		log.Fatalf("Cannot bind to openldap.Reason:%v", err)
+		log.Printf("Cannot bind to openldap.Reason:%v", err)
 		return nil, err
 	}
 	log.Printf("Binded")
